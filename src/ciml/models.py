@@ -71,6 +71,8 @@ classifiers['cart'] = DecisionTreeClassifier()
 classifiers['extra'] = ExtraTreeClassifier()
 classifiers['svml'] = SVC(kernel='linear')
 classifiers['svmp'] = SVC(kernel='poly')
+classifiers['svmr'] = SVC(kernel='rbf')
+classifiers['svms'] = SVC(kernel='sigmoid')
 c_values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 for c in c_values:
     classifiers['svmr'+str(c)] = SVC(C=c)
@@ -82,7 +84,7 @@ classifiers['bag'] = BaggingClassifier(n_estimators=n_trees)
 classifiers['rf'] = RandomForestClassifier(n_estimators=n_trees)
 classifiers['et'] = ExtraTreesClassifier(n_estimators=n_trees)
 classifiers['gbm'] = GradientBoostingClassifier(n_estimators=n_trees)
-for hls in [(100,), (10, 10), (8, 8, 8, 8, 8)]:
+for hls in [(100,), (10, 10), (100, 100, 100, 100, 100, 100, 100)]:
     classifiers['mlp' + '/'.join([str(i) for i in hls])] = MLPClassifier(hidden_layer_sizes=hls)
 
 
